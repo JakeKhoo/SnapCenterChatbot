@@ -1,0 +1,135 @@
+version: "3.1"
+
+nlu:
+  - intent: greet_what
+    examples: |
+      - greet
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - morn
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+      - How are you?
+      - what is this
+      - what is this about
+      - what is snap studios 
+      - snap studios
+      - what is this business
+      - what can you answer
+      - what topics are you aware of
+      - what can you do
+
+  - intent: where_are_you
+    examples: |
+      - where is this located
+      - where are you 
+      - location 
+      - where do I find you 
+      - what is your locaiton 
+      - where is the store located
+
+  - intent: are_there_promotions
+    examples: |
+      - promotions
+      - are there promotions
+      - are there discounts 
+      - discounts 
+      - promo 
+      - discount 
+      - cheaper
+
+  - intent: are_there_events
+    examples: |
+      - any events
+      - backgrounds
+      - new events
+      - celebrations 
+      - are there new events
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+      - thanks
+      - thx
+      - thank you
+
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+
+  - intent: booking
+    examples: |
+      - booking
+      - book
+      - book a session
+      - book a session with you
+      - schedule 
+      - room 
+      - book a room
+
+  - intent: email
+    examples: |
+      - [bob@yahoo.com](email)
+      - [jake.khoo@gmail.com](email)
+      - [thomas_macpherson@outlook.com](email)
+      - [john_dow@dow.com](email)
+      - [@](email)
+
+  - intent: date_time
+    examples: |
+      - [22/01/24 05 PM](date_time)
+      - [28/01/24 10 PM](date_time)
+      - [30/01/24 10 PM](date_time)
+
+  - intent: feedback
+    examples: |
+      - [The Chinese New Year photobooth looks amazing!](feedback)
+      - [I love the photobooth](feedback)
+      - [Can you make the phototaking time longer?](feedback)
+
+  - intent: start_feedback_form
+    examples: |
+      - I would like to give feedback
+      - I would like to give feedback about the photobooth
+      - review
+      - feedback
+      - questions
+      - I have some feedback
+      - I have some feedback about the photobooth
+      - I have some feedback about the photobooth
+      - I would like to as a question
+      - Can I give some suggestions
+      - questions
+      - suggestions

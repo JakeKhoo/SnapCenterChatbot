@@ -1,0 +1,122 @@
+version: "3.1"
+
+intents:
+  - greet_what
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - where_are_you
+  - are_there_events
+  - are_there_promotions
+  - booking
+  - email
+  - date_time
+  - feedback
+  - start_feedback_form
+
+responses:
+  utter_start_froms:
+    - text: "Alright! Let's get started. I will need some information from you."
+  utter_submit:
+    - text: "All done! I have booked a room for you"
+
+  utter_ask_email:
+    - text: "What is your email?"
+
+  utter_slots_values:
+    - text: I will book a room on {date_time} under {email}.
+
+  utter_ask_date_time:
+    - text: "What date and time would you like to book? (DD/MM/YY HH AM/PM) \n\nExample: 22/01/24 05 PM"
+
+  utter_ask_feedback:
+    - text: "Please provide any feedback, questions, recommendations or suggestions and we will get back to you!"
+
+  utter_submit_feedback:
+    - text: "Thank you for your feedback 😁"
+
+  utter_greet_what:
+    - text: "Hey! I am Snap Center's AI Bot 🤖. \n \nI can answer questions about Snap Studios, schedule bookings and receive feedback."
+      buttons:
+        - title: Location
+          payload: /location
+        - title: Promotions
+          payload: /promotions
+        - title: Events
+          payload: /events
+        - title: Booking
+          payload: /booking
+        - title: Feedback
+          payload: /I would like to give feedback about the photobooth
+
+  utter_goodbye:
+    - text: "Thank you and have a nice day!"
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+  utter_location:
+    - text: "We are located at ABC Mall\
+        \naddress: Plaza XYZ,\
+        \nJalan Pendekar 15,\
+        \n123456, Johor, Malaysia\
+        \nlevel 10, Unit"
+      image: "https://images.adsttc.com/media/images/63c5/5503/4070/1201/70fa/cb07/medium_jpg/not-ready-liugong-hui-mall-cctn-design-plus-beijing-shougang-international-engineering-technology_2.jpg?1673876752"
+
+  utter_promotions:
+    - text: "For a limited time only, here is 25% off all online bookings! 🎉\n*While stocks last!"
+      image: "https://www.typecalendar.com/wp-content/uploads/2023/03/Coupon.jpg"
+
+  utter_events:
+    - text: "Come down to take Chinese New Year pictures from 1st Feb to 20th Feb! 🧧🎏🧨"
+      image: "https://m.media-amazon.com/images/I/81xPk49STNL._AC_SL1500_.jpg"
+
+forms:
+  booking_form:
+    required_slots:
+      - email
+      - date_time
+  feedback_form:
+    required_slots:
+      - email
+      - feedback
+
+slots:
+  email:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: email
+          - active_loop: feedback_form
+            requested_slot: email
+
+  date_time:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: date_time
+
+  feedback:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: feedback_form
+            requested_slot: feedback
+
+actions:
+  - validate_booking_form
+  - action_reset_all_slots
+  - validate_feedback_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

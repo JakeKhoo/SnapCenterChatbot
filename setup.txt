@@ -1,0 +1,5 @@
+rasa run actions
+rasa run --cors "*" --enable-api
+
+cd RasaUI
+npm start

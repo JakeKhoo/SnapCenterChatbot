@@ -1,0 +1,60 @@
+version: "3.1"
+
+rules:
+  - rule: Answer greet and what is this about
+    steps:
+      - intent: greet_what
+      - action: utter_greet_what
+
+  - rule: answer where is it found
+    steps:
+      - intent: where_are_you
+      - action: utter_location
+
+  - rule: answer promotions
+    steps:
+      - intent: are_there_promotions
+      - action: utter_promotions
+
+  - rule: answer events
+    steps:
+      - intent: are_there_events
+      - action: utter_events
+
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: activate booking form
+    steps:
+      - intent: booking
+      - action: utter_start_froms
+      - action: booking_form
+      - active_loop: booking_form
+
+  - rule: submit booking form
+    condition:
+      - active_loop: booking_form
+    steps:
+      - action: booking_form
+      - active_loop: null
+      - action: utter_submit
+      - action: utter_slots_values
+      - action: action_reset_all_slots
+
+  - rule: activate feedback form
+    steps:
+      - intent: start_feedback_form
+      - action: utter_start_froms
+      - action: feedback_form
+      - active_loop: feedback_form
+
+  - rule: submit feedback_form
+    condition:
+      - active_loop: feedback_form
+    steps:
+      - action: feedback_form
+      - active_loop: null
+      - action: utter_submit_feedback
+      - action: action_reset_all_slots
